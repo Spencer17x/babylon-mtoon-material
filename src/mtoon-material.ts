@@ -46,6 +46,7 @@ import BumpFragment from './shaders/bump-fragment.frag';
 import LightFragment from './shaders/light-fragment.frag';
 import VertexShader from './shaders/mtoon.vert';
 import FragmentShader from './shaders/mtoon.frag';
+import { ThinMaterialHelper } from './lib/thinMaterialHelper';
 
 /**
  * Debug shading mode
@@ -1139,7 +1140,10 @@ export class MToonMaterial extends PushMaterial {
         );
 
         // Values that need to be evaluated on every frame
-        MaterialHelper.PrepareDefinesForFrameBoundValues(scene, engine, defines, useInstances, null, subMesh.getRenderingMesh().hasThinInstances);
+        const renderingMeshMaterial = subMesh.getMaterial();
+        if (renderingMeshMaterial) {
+            MaterialHelper.PrepareDefinesForFrameBoundValues(scene, engine, renderingMeshMaterial, defines, useInstances, null, subMesh.getRenderingMesh().hasThinInstances);
+        }
 
         // External config
         this._eventInfo.defines = defines;
@@ -1593,7 +1597,8 @@ export class MToonMaterial extends PushMaterial {
             this._callbackPluginEventBindForSubMesh(this._eventInfo);
 
             // Clip plane
-            MaterialHelper.BindClipPlane(effect, scene);
+            ThinMaterialHelper.BindClipPlane(effect, scene);
+            scene.clipPlane = null;
 
             // Colors
             this.bindEyePosition(effect);
