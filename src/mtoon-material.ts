@@ -46,7 +46,7 @@ import BumpFragment from './shaders/bump-fragment.frag';
 import LightFragment from './shaders/light-fragment.frag';
 import VertexShader from './shaders/mtoon.vert';
 import FragmentShader from './shaders/mtoon.frag';
-import { ThinMaterialHelper } from './lib/thinMaterialHelper';
+import { ThinMaterialHelper } from './helpers/thinMaterialHelper';
 
 /**
  * Debug shading mode
@@ -769,7 +769,7 @@ export class MToonMaterial extends PushMaterial {
         this._markAllSubMeshesAsMiscDirty();
     }
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    private isOutline: number = 0.0;
+    private isOutline = 0.0;
     public enableOutlineRender(): void {
         this.isOutline = 1.0;
     }
@@ -985,7 +985,7 @@ export class MToonMaterial extends PushMaterial {
     /**
      * {@inheritdoc}
      */
-    public isReadyForSubMesh(mesh: AbstractMesh, subMesh: SubMesh, useInstances: boolean = false): boolean {
+    public isReadyForSubMesh(mesh: AbstractMesh, subMesh: SubMesh, useInstances = false): boolean {
         if (!this._uniformBufferLayoutBuilt) {
             this.buildUniformLayout();
         }

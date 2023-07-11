@@ -197,7 +197,7 @@ export class MToonMaterialDefines extends MaterialDefines implements IImageProce
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public setReflectionMode(modeToEnable: string) {
+    public setReflectionMode(_modeToEnable: string) {
         throw new Error('This material cannot use `setReflectionMode`');
     }
 }
