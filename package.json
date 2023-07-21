@@ -1,16 +1,11 @@
 {
-    "name": "babylon-mtoon-material",
-    "version": "5.1.1",
+    "name": "@spencer17x/babylon-mtoon-material",
+    "version": "6.0.0",
     "description": "Unity MToon Shader WebGL porting with babylon.js",
     "license": "MIT",
-    "author": {
-        "email": "yamagishi.iloop@gmail.com",
-        "name": "Masaru Yamagishi",
-        "url": "https://github.com/il-m-yamagishi"
-    },
     "repository": {
         "type": "git",
-        "url": "https://github.com/virtual-cast/babylon-mtoon-material.git"
+        "url": "https://github.com/Spencer17x/babylon-mtoon-material/tree/6.x"
     },
     "keywords": [
         "babylon.js",
@@ -77,7 +72,7 @@
         "format": "yarn format:check && yarn format:fix",
         "format:check": "prettier --check src",
         "format:fix": "prettier --write src",
-        "debug": "webpack serve --config webpack.test.config.js",
+        "dev": "webpack serve --config webpack.test.config.js",
         "release": "semantic-release",
         "release:gh-pages": "gh-pages -d test -u \"Masaru Yamagishi <m-yamagishi@virtualcast.jp>\" -m \"ci(gh-pages): update gh-pages [skip ci]\"",
         "test": "jest test/jest.test.js"
